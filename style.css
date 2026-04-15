@@ -23,11 +23,11 @@
 body {
     background-color: black;
     color: rgba(255, 255, 255, 0.9);
-    font-family: "Clash";
+    font-family: "Inter", sans-serif;
 }
 
 h1, h2 {
-    font-family: "Clash";
+    font-family: "Clash", "Inter", sans-serif;
 }
 
 header {
@@ -52,14 +52,73 @@ header {
 .hero{
     width: 100%;
     height: 100vh;
+    overflow: hidden;
+    position: relative;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 
     .bg{
-        position: absolute;
-        z-index: -1; 
+        position: absolute; 
         top: 0;
         left: 0;
+        z-index: -1;
+    }
+
+    .subtitulo{
+    position: relative;
+    width: 360px;
+    height: 60px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 47px;
+
+    /* &::after{} -> também funciona ao invés de colocar o subtitulo:after*/
+    
+        video{
+            position: absolute;
+            top: 0%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;  
+            z-index: -1;
+        }
+
+        h4{
+            font-size: 16px;
+            font-family: "Inter", sans-serif;
+            position: relative; 
+            font-weight: 400; /*afinando a fonte pq estava mt grossa*/
+            color: rgba(159, 159, 159, 0.9);
+            mix-blend-mode: color-dodge; /*fazendo o texto interagir com o vídeo de fundo, criando um efeito de fundo*/
+            z-index: 2; /*deixando acima do fundo preto no subtitulo after*/
+        }
+    }
+
+    .subtitulo:after{
+        content: "";
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.339);
+        position: absolute;
+        z-index: 1;
+    }
+
+    .conteudo{
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* alinhando as coisas no centro */
+        align-items: center; /* alinhando as coisas no centro */
+        padding: 10vw; /* 4vw é a margem padrão do header -> alinhando bonitinho */
+
+        h2{
+            font-size: 3.5vw; /* vw serve para se ajustar automaticamente na tela do usuário */
+            font-weight: 700;
+            text-align: center; /* alinhando o texto no centro, pois no conteudo ele não estava alinhado */
+        }
     }
 }
