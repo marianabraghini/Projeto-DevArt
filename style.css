@@ -4,6 +4,12 @@
     box-sizing: border-box;
 }
 
+:root{
+    --branco: rgba(255, 255, 255, 0.9);
+    --preto: rgba(0, 0, 0, 0.9);
+    /*criando uma variável para padronizar cor com as características/ transparência que quero */
+}
+
 @font-face {
     font-family: "Clash";
     src: url(fonts/ClashDisplay-Bold.otf) format("truetype");
@@ -22,12 +28,39 @@
 
 body {
     background-color: black;
-    color: rgba(255, 255, 255, 0.9);
+    color: var(--branco);
     font-family: "Inter", sans-serif;
 }
 
 h1, h2 {
     font-family: "Clash", "Inter", sans-serif;
+}
+
+a{
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(252, 251, 254, 0.9);
+    padding: 8px 8px 8px 20px; /*arrumando o espaçamento do botão*/
+    /*indo arrumar no html o link do icone vector nos meus botões*/
+    gap: 16px; /*espaçamento inteiro no frame da escrita para as imagens dos botoes*/
+    border-radius: 40px; /*deixando o botão redondo*/
+    color: rgba(0, 0, 0, 0.9);
+}
+.botoes{
+    /* como os botões estão alinhados com o plano de fundo e tava dando bug no espaçamento do segundo botão, aqui vamos alinhas bonitinho */
+    display: flex;
+    /*flex-direction: column -> colocar um embaixo do outro
+    align-items: start;
+*/
+    gap: 32px;  /*espaçamento entre os botões*/
+}
+.botaoSecundario{
+    background-color: black;
+    color: rgba(255, 255, 255, 0.9);
+    border: 0.2px solid rgba(255, 255, 255, 0.298);
 }
 
 header {
@@ -75,6 +108,7 @@ header {
     justify-content: center;
     align-items: center;
     border-radius: 47px;
+    margin-bottom: 72px;
 
     /* &::after{} -> também funciona ao invés de colocar o subtitulo:after*/
     
@@ -113,12 +147,26 @@ header {
         flex-direction: column;
         justify-content: center; /* alinhando as coisas no centro */
         align-items: center; /* alinhando as coisas no centro */
-        padding: 10vw; /* 4vw é a margem padrão do header -> alinhando bonitinho */
+        padding: 0 10vw; /* 4vw é a margem padrão do header -> alinhando bonitinho */
 
         h2{
             font-size: 3.5vw; /* vw serve para se ajustar automaticamente na tela do usuário */
-            font-weight: 700;
+            font-weight: 400;
             text-align: center; /* alinhando o texto no centro, pois no conteudo ele não estava alinhado */
+
+        }
+
+        p{
+            text-align: center; 
+            width: 80%;
+            font-size: clamp(16px, 1.1vw, 1.1vw); /* aqui, disse que teria um tamanho mínimo para a fonte*/
+            /*clamp é para deixar uma condição fixa, no sentido de responsividade*/
+            font-weight: 250;
+            line-height: clamp(16px, 1.8vw, 24px); /* altura da linha, mínima e máxima */
+            margin-top: 24px; /* margem do parágrafo pq tá muito próxima ao título */
+
+            /*padding: 30px, 20px, 40px, 20px; -> aqui, também é espaçamento interno, ou seja, entre linhas, como na margin. sobre os números: superior, direita, inferior, esquerda */
+            margin-bottom: 40px;
         }
     }
 }
